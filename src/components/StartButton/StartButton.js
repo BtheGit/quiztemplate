@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+import './StartButton.css';
 
 class StartButton extends Component {
   render() {
     return (
-      <button className="startButton">
-      {this.props.text}
-      </button>
+      <Link to={this.props.link} className="start-button">{this.props.text}</Link>
     );
   }
 }
