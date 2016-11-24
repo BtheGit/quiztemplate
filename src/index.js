@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import { createHistory, createHashHistory } from 'history';
+import Root from './Root';
+
+const history = process.env.NODE_ENV === 'production' ? createHashHistory() : createHistory();
 
 ReactDOM.render(
-  <App />,
+  <Root history={history} />,
   document.getElementById('root')
 );
