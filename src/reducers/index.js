@@ -1,2 +1,2 @@
-import count from './count';
-export { count };
+import quiz from './quiz';
+export { quiz };
