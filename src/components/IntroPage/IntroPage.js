@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StartButton from '../components/StartButton/StartButton';
+import StartButton from '../StartButton/StartButton';
 
 class IntroPage extends Component {
   render() {

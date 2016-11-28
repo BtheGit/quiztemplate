@@ -1,11 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createHistory, createHashHistory } from 'history';
-import Root from './Root';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+import { count } from './reducers/index';
 
-const history = process.env.NODE_ENV === 'production' ? createHashHistory() : createHistory();
+import App from './App';
+import IntroPage from './components/IntroPage/IntroPage';
+import QuestionsPage from './components/QuestionsPage/QuestionsPage';
+
+// Add the reducer to your store on the `routing` key
+const store = createStore(
+  combineReducers({
+    count,
+    routing: routerReducer
+  })
+);
+
+// Create an enhanced history that syncs navigation events with the store
+const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
-  <Root history={history} />,
+  <Provider store={store}>
+    <Router history={history}>
+      <Route name='home' path='/' component={App}>
+        <IndexRoute component={IntroPage}/>
+        <Route name='intro' path='' component={IntroPage} />
+        <Route name='questions' path='/questions' component={QuestionsPage} />
+      </Route>
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
