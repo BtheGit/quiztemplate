@@ -13,14 +13,24 @@ const initialState = {
   correctAnswerCount: 0
 };
 
+//TEMP NOTE: I refactored this to the more standard Switch style. 
 const quiz = (state = initialState, action) => {
-  if(action.type === 'NEXT_QUESTION') {
-    Object.assign(state, {
-      quesCounter: state.quesCounter + 1
-    });
+  switch(action.type) {
+    case 'NEXT_QUESTION':
+      return  (Object.assign(state, {   
+        quesCounter: state.quesCounter + 1
+      }));
+    case 'CORRECT_ANSWER':
+      return (Object.assign(state, {
+        correctAnswerCount: state.correctAnswerCount + 1
+      }))
+    case 'ADD_ANSWERED':
+      return (Object.assign(state, {
+        answerRecord: [...state.answerRecord, action.answer]
+      }))
+    default:
+      return state;
   }
-  console.log('Question counter increased');
-  return state
 }
 
 export default quiz;

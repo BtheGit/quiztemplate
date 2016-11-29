@@ -26,7 +26,7 @@ class QuestionsPage extends Component {
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.loadQuizData();
     this.loadQuestionData();
   }
@@ -48,27 +48,30 @@ class QuestionsPage extends Component {
   }
 
   handleAnswerSelected(event) {
-    if(this.state.quesCounter === this.state.questions.length) {
-      this.calculateResults();
-      this.setState({quizFinished: true});
+    this.checkAnswer(event.currentTarget.id)
+    if(this.state.quesCounter === this.state.questions.length - 1) {
+      this.setState({quizFinished: true}, () => this.calculateResults());
     } else {
-      this.checkAnswer(event.currentTarget.id);
       this.setNextQuestion();
     }
   }
 
   checkAnswer(answer) {
     this.setState({answerRecord: [...this.state.answerRecord, answer]})
+    this.props.dispatch({
+      type: 'ADD_ANSWERED',
+      answer: answer
+    });
     if (answer === this.state.quesAnswer.toString()) {
       this.setState({correctAnswerCount: this.state.correctAnswerCount + 1})
+      this.props.dispatch({ type: 'CORRECT_ANSWER' });
     }
 
 
   }
 
   setNextQuestion() {
-    this.setState({quesCounter: this.state.quesCounter + 1});
-    this.loadQuestionData();
+    this.setState({quesCounter: this.state.quesCounter + 1}, () => this.loadQuestionData());
     this.props.dispatch({
       type: 'NEXT_QUESTION'
     });
@@ -112,12 +115,18 @@ class QuestionsPage extends Component {
 
 
   render() {
-    const { quesCounter } = this.props;
+    const { quesCounter, correctAnswerCount, answerRecord } = this.props;
 
     return (
       <div>
         <pre>
-          Question Counter {this.props.quiz.quesCounter}
+          quesCounter: {this.props.quiz.quesCounter}
+        </pre>        
+        <pre>
+          correctAnswerCount: {this.props.quiz.correctAnswerCount}
+        </pre>
+        <pre>
+          answerRecord: {this.props.quiz.answerRecord}
         </pre>
         {(this.state.quizFinished) ? this.renderResultsPage(): this.renderTFQuestion()}
         <div>
