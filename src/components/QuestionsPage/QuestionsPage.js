@@ -3,84 +3,44 @@ import { Link } from 'react-router';
 import TFQuestion from '../TFQuestion/TFQuestion';
 import ResultsPage from '../../pages/ResultsPage';
 import { connect } from 'react-redux';
-import quiz from '../../api/quizdata';
+import { fetchQuestions, nextQuestion, finishQuiz, correctAnswer, addAnswered } from '../../actions';
 
 class QuestionsPage extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      type: '',
-      questions: [],
-      results: [],
-      result: '',
-      quesCounter: 0,
-      quesText: '',
-      quesOptions: [],
-      quesAnswer: '',
-      quesReveal: '',
-      quizFinished: false,
-      answerRecord: [],
-      correctAnswerCount: 0
-    }
+  constructor() {
+    super();
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
   }
 
   componentDidMount() {
-    this.loadQuizData();
-    this.loadQuestionData();
-  }
-
-  loadQuizData() {
-    this.setState({
-      type: quiz.type,
-      questions: quiz.questions,
-      results: quiz.results,
-    })
-  }
-
-  loadQuestionData() {
-    this.setState({
-      quesText: quiz.questions[this.state.quesCounter]['question'],
-      quesAnswer: quiz.questions[this.state.quesCounter]['answer'],
-      quesReveal: quiz.questions[this.state.quesCounter]['reveal'],
-    })
+    this.props.dispatch(fetchQuestions());
   }
 
   handleAnswerSelected(event) {
-    this.checkAnswer(event.currentTarget.id)
-    if(this.state.quesCounter === this.state.questions.length - 1) {
-      this.setState({quizFinished: true}, () => this.calculateResults());
-    } else {
-      this.setNextQuestion();
+    this.checkAnswer(event.currentTarget.id);
+
+    if(this.props.quiz.quesCounter === this.props.quiz.questions.length - 1) {
+      this.props.dispatch(finishQuiz());
+      return;
     }
+
+    this.setNextQuestion();
   }
 
   checkAnswer(answer) {
-    this.setState({answerRecord: [...this.state.answerRecord, answer]})
-    this.props.dispatch({
-      type: 'ADD_ANSWERED',
-      answer: answer
-    });
-    if (answer === this.state.quesAnswer.toString()) {
-      this.setState({correctAnswerCount: this.state.correctAnswerCount + 1})
-      this.props.dispatch({ type: 'CORRECT_ANSWER' });
+    this.props.dispatch(addAnswered(answer));
+    
+    if (answer === this.getCurrentQuestion().answer.toString()) {
+      this.props.dispatch(correctAnswer(answer));
     }
-
-
   }
 
   setNextQuestion() {
-    this.setState({quesCounter: this.state.quesCounter + 1}, () => this.loadQuestionData());
-    this.props.dispatch({
-      type: 'NEXT_QUESTION'
-    });
+    this.props.dispatch(nextQuestion());
   }
 
-  calculateResults() {
-    if (this.state.type === 'TF') {
-      this.setState({result: this.state.results[this.state.correctAnswerCount]});
-    }
+  getCurrentQuestion() {
+    return this.props.quiz.questions[this.props.quiz.quesCounter];
   }
 
   renderTFQuestion() {
@@ -88,13 +48,13 @@ class QuestionsPage extends Component {
       <div>
         <div>
           <TFQuestion
-            question={this.state.quesText}
+            question={this.getCurrentQuestion()}
             handleAnswerSelected={this.handleAnswerSelected}
           />
         </div>
         <div>
-          <div><em>Answer Record: {this.state.answerRecord}</em></div>
-          <div><em>Correct Count: {this.state.correctAnswerCount}</em></div>
+          <div><em>Answer Record: {this.props.quiz.answerRecord}</em></div>
+          <div><em>Correct Count: {this.props.quiz.correctAnswerCount}</em></div>
         </div>
       </div>
     );
@@ -104,31 +64,29 @@ class QuestionsPage extends Component {
     return (
       <div>
         <ResultsPage
-          count={this.state.questions.length}
-          result={this.state.correctAnswerCount}
-          resultText={this.state.result}
+          count={this.props.quiz.questions.length}
+          result={this.props.quiz.correctAnswerCount}
+          resultText={this.props.quiz.result}
         />
       </div>
     )
   }
 
-
-
   render() {
-    const { quesCounter, correctAnswerCount, answerRecord } = this.props;
+    const { quesCounter, correctAnswerCount, answerRecord } = this.props.quiz;
 
     return (
       <div>
         <pre>
-          quesCounter: {this.props.quiz.quesCounter}
-        </pre>        
-        <pre>
-          correctAnswerCount: {this.props.quiz.correctAnswerCount}
+          quesCounter: {quesCounter}
         </pre>
         <pre>
-          answerRecord: {this.props.quiz.answerRecord}
+          correctAnswerCount: {correctAnswerCount}
         </pre>
-        {(this.state.quizFinished) ? this.renderResultsPage(): this.renderTFQuestion()}
+        <pre>
+          answerRecord: {answerRecord}
+        </pre>
+        {(this.props.quiz.quizFinished) ? this.renderResultsPage(): this.renderTFQuestion()}
         <div>
           <Link to="/">Home</Link>
         </div>

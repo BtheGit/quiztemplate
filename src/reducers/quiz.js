@@ -4,20 +4,15 @@ const initialState = {
   results: [],
   result: '',
   quesCounter: 0,
-  quesText: '',
-  quesOptions: [],
-  quesAnswer: '',
-  quesReveal: '',
   quizFinished: false,
   answerRecord: [],
   correctAnswerCount: 0
 };
 
-//TEMP NOTE: I refactored this to the more standard Switch style. 
 const quiz = (state = initialState, action) => {
   switch(action.type) {
     case 'NEXT_QUESTION':
-      return  (Object.assign({}, state, {   //added empty object per docs to avoid mutating state directly
+      return  (Object.assign({}, state, {
         quesCounter: state.quesCounter + 1
       }));
     case 'CORRECT_ANSWER':
@@ -26,7 +21,19 @@ const quiz = (state = initialState, action) => {
       }))
     case 'ADD_ANSWERED':
       return (Object.assign({}, state, {
-        answerRecord: [...state.answerRecord, action.answer]
+        answerRecord: [...state.answerRecord, action.payload]
+      }))
+    case 'FETCH_QUESTIONS':
+      return (Object.assign({}, state, {
+        questions: action.payload
+      }))
+    case 'FINISH_QUIZ':
+      return (Object.assign({}, state, {
+        quizFinished: true
+      }))
+    case 'CORRECT_ANSWER':
+      return (Object.assign({}, state, {
+        correctAnswerCount: state.correctAnswerCount + 1
       }))
     default:
       return state;
