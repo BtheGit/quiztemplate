@@ -17,15 +17,15 @@ const initialState = {
 const quiz = (state = initialState, action) => {
   switch(action.type) {
     case 'NEXT_QUESTION':
-      return  (Object.assign(state, {   
+      return  (Object.assign({}, state, {   //added empty object per docs to avoid mutating state directly
         quesCounter: state.quesCounter + 1
       }));
     case 'CORRECT_ANSWER':
-      return (Object.assign(state, {
+      return (Object.assign({}, state, {
         correctAnswerCount: state.correctAnswerCount + 1
       }))
     case 'ADD_ANSWERED':
-      return (Object.assign(state, {
+      return (Object.assign({}, state, {
         answerRecord: [...state.answerRecord, action.answer]
       }))
     default:
