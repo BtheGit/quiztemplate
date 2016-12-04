@@ -21,14 +21,10 @@ class QuestionsPage extends Component {
   handleAnswerSelected() {
     if(this.props.quiz.questions.length === this.props.quiz.quesCounter) {
       this.props.dispatch(finishQuiz());
-      return;
     }
-
-    this.setNextQuestion();
-  }
-
-  setNextQuestion() {
-    this.props.dispatch(nextQuestion());
+    else {
+      this.props.dispatch(nextQuestion());
+    }
   }
 
   getCurrentQuestion() {
@@ -50,23 +46,6 @@ class QuestionsPage extends Component {
         return <div>Empty</div>
     }
   }
-
-  // renderTFQuestion() {
-  //   return (
-  //     <div>
-  //       <div>
-  //         <TFQuestion
-  //           question={this.getCurrentQuestion()}
-  //           handleAnswerSelected={this.handleAnswerSelected}
-  //         />
-  //       </div>
-  //       <div>
-  //         <div><em>Answer Record: {this.props.quiz.answerRecord}</em></div>
-  //         <div><em>Correct Count: {this.props.quiz.correctAnswerCount}</em></div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
 
   renderResultsPage() {
     return (
