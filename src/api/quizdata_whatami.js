@@ -5,8 +5,7 @@ const quiz = {
 				answers: [
 					{
 						text: "The painting of Mona Lisa",
-						result: "A",
-						points: 1
+						result: {"A": 1, "B": -1}
 					},
 					{
 						text: "The last existing photography with my grandma",
