@@ -19,7 +19,7 @@ class QuestionsPage extends Component {
   }
 
   handleAnswerSelected() {
-    if(this.props.quiz.questions.length === this.props.quiz.quesCounter) {
+    if(this.props.quiz.questions.length - 1 === this.props.quiz.quesCounter) {
       this.props.dispatch(finishQuiz());
     }
     else {
