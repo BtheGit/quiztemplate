@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import TFQuestion from '../TFQuestion/TFQuestion';
 import ResultsPage from '../../pages/ResultsPage';
+import SingleAnswer from '../questionTypes/SingleAnswer';
+// import TFQuestion from '../TFQuestion/TFQuestion';
+import DatePicker from '../questionTypes/DatePicker';
 import { connect } from 'react-redux';
-import { fetchQuestions, nextQuestion, finishQuiz, correctAnswer, addAnswered } from '../../actions';
+import { fetchQuestions, nextQuestion, finishQuiz } from '../../actions';
 
 class QuestionsPage extends Component {
 
@@ -16,23 +18,13 @@ class QuestionsPage extends Component {
     this.props.dispatch(fetchQuestions());
   }
 
-  handleAnswerSelected(event) {
-    this.checkAnswer(event.currentTarget.id);
-
-    if(this.props.quiz.quesCounter === this.props.quiz.questions.length - 1) {
+  handleAnswerSelected() {
+    if(this.props.quiz.questions.length === this.props.quiz.quesCounter) {
       this.props.dispatch(finishQuiz());
       return;
     }
 
     this.setNextQuestion();
-  }
-
-  checkAnswer(answer) {
-    this.props.dispatch(addAnswered(answer));
-    
-    if (answer === this.getCurrentQuestion().answer.toString()) {
-      this.props.dispatch(correctAnswer(answer));
-    }
   }
 
   setNextQuestion() {
@@ -43,22 +35,38 @@ class QuestionsPage extends Component {
     return this.props.quiz.questions[this.props.quiz.quesCounter];
   }
 
-  renderTFQuestion() {
-    return (
-      <div>
-        <div>
-          <TFQuestion
-            question={this.getCurrentQuestion()}
-            handleAnswerSelected={this.handleAnswerSelected}
-          />
-        </div>
-        <div>
-          <div><em>Answer Record: {this.props.quiz.answerRecord}</em></div>
-          <div><em>Correct Count: {this.props.quiz.correctAnswerCount}</em></div>
-        </div>
-      </div>
-    );
+  renderQuestion() {
+    let question = this.getCurrentQuestion();
+    if(typeof question === "undefined") {
+      return;
+    }
+
+    switch(question.type) {
+      case 'singleAnswer':
+        return <SingleAnswer question={question} onChange={this.handleAnswerSelected} />
+      case 'datepicker':
+        return <DatePicker question={question} onChange={this.handleAnswerSelected} />
+      default:
+        return <div>Empty</div>
+    }
   }
+
+  // renderTFQuestion() {
+  //   return (
+  //     <div>
+  //       <div>
+  //         <TFQuestion
+  //           question={this.getCurrentQuestion()}
+  //           handleAnswerSelected={this.handleAnswerSelected}
+  //         />
+  //       </div>
+  //       <div>
+  //         <div><em>Answer Record: {this.props.quiz.answerRecord}</em></div>
+  //         <div><em>Correct Count: {this.props.quiz.correctAnswerCount}</em></div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   renderResultsPage() {
     return (
@@ -86,7 +94,7 @@ class QuestionsPage extends Component {
         <pre>
           answerRecord: {answerRecord}
         </pre>
-        {(this.props.quiz.quizFinished) ? this.renderResultsPage(): this.renderTFQuestion()}
+        {(this.props.quiz.quizFinished) ? this.renderResultsPage(): this.renderQuestion()}
         <div>
           <Link to="/">Home</Link>
         </div>

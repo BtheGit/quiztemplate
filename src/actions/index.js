@@ -1,4 +1,4 @@
-import quizdata from '../api/quizdata';
+import quizdata from '../api/quizdata_whatami';
 
 export function fetchQuestions() {
   return {
