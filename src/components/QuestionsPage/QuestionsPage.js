@@ -19,7 +19,7 @@ class QuestionsPage extends Component {
   }
 
   handleAnswerSelected() {
-    if(this.props.quiz.questions.length === this.props.quiz.quesCounter) {
+    if(this.props.quiz.questions.length - 1 === this.props.quiz.quesCounter) {
       this.props.dispatch(finishQuiz());
     }
     else {
@@ -60,23 +60,16 @@ class QuestionsPage extends Component {
   }
 
   render() {
-    const { quesCounter, correctAnswerCount, answerRecord } = this.props.quiz;
-
     return (
       <div>
-        <pre>
-          quesCounter: {quesCounter}
-        </pre>
-        <pre>
-          correctAnswerCount: {correctAnswerCount}
-        </pre>
-        <pre>
-          answerRecord: {answerRecord}
-        </pre>
-        {(this.props.quiz.quizFinished) ? this.renderResultsPage(): this.renderQuestion()}
-        <div>
-          <Link to="/">Home</Link>
-        </div>
+        <ul className="nav">
+        	<li><Link to="/">Home</Link></li>
+        </ul>
+        {
+          (this.props.quiz.quizFinished)
+          ? <div className="result-wrap">{this.renderResultsPage()}</div>
+          : <div className="question-wrap">{this.renderQuestion()}</div>
+        }
       </div>
     );
   }

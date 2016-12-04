@@ -10,6 +10,8 @@ import App from './App';
 import IntroPage from './components/IntroPage/IntroPage';
 import QuestionsPage from './components/QuestionsPage/QuestionsPage';
 
+import './index.css';
+
 // Add the reducer to your store on the `routing` key
 const store = createStore(
   combineReducers({

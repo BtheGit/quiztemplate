@@ -23,9 +23,13 @@ function IntroPage (props) {
 
     return (
       <div>
-        <StartButton text="Start Quiz" link="/questions"></StartButton>
-        <div>
-        	<Link to="/results">Results Page</Link>
+        <ul className="nav">
+        	<li><Link to="/home">Home</Link></li>
+        </ul>
+        <div className="intro-wrap">
+          <h1>Who Am I?</h1>
+          <p>Welcome to our quiz</p>
+          <StartButton text="Start Quiz" link="/questions"></StartButton>
         </div>
       </div>
     );

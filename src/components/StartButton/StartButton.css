@@ -1,4 +1,11 @@
 .start-button {
   display: inline-block;
-  background: rgba(69,69,69, .69);
+  background: red;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.start-button:hover {
+  background: darkblue;
 }
