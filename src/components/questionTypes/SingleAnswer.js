@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { nextQuestion, finishQuiz } from '../../actions';
 
 const SingleAnswer = (props) => {
 
 
   const handleAnswerSelected = (e) => {
-      if (props.quiz.questions.length - 1 === props.quiz.quesCounter) {
-        props.dispatch(finishQuiz());
-      } else {
-        props.dispatch(nextQuestion());
-      }
+    if (typeof props.nextQuestion === 'function') {
+      props.nextQuestion(e.target.value);
+    }
   }
 
   
