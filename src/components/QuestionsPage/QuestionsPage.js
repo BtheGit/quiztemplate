@@ -5,7 +5,7 @@ import SingleAnswer from '../questionTypes/SingleAnswer';
 // import TFQuestion from '../TFQuestion/TFQuestion';
 import DatePicker from '../questionTypes/DatePicker';
 import { connect } from 'react-redux';
-import { fetchQuestions, nextQuestion, finishQuiz } from '../../actions';
+import { nextQuestion, finishQuiz, resetQuiz } from '../../actions'; //deprecated fetchQuestions for resetQuiz
 
 class QuestionsPage extends Component {
 
@@ -14,7 +14,7 @@ class QuestionsPage extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchQuestions());
+    this.props.dispatch(resetQuiz());
   }
 
 

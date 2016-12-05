@@ -11,6 +11,15 @@ const initialState = {
 
 const quiz = (state = initialState, action) => {
   switch(action.type) {
+    case 'RESET_QUIZ':
+      return ({
+        ...state,
+        quesCounter: 0,
+        correctAnswerCount: 0,
+        answerRecord: [],
+        quizFinished: false,
+        questions: action.payload
+      })
     case 'NEXT_QUESTION':
       return  (Object.assign({}, state, {
         quesCounter: state.quesCounter + 1
@@ -23,10 +32,10 @@ const quiz = (state = initialState, action) => {
       return (Object.assign({}, state, {
         answerRecord: [...state.answerRecord, action.payload]
       }))
-    case 'FETCH_QUESTIONS':
-      return (Object.assign({}, state, {
-        questions: action.payload
-      }))
+    // case 'FETCH_QUESTIONS':                                      //Deprecated?
+    //   return (Object.assign({}, state, {
+    //     questions: action.payload
+    //   }))
     case 'FINISH_QUIZ':
       return (Object.assign({}, state, {
         quizFinished: true

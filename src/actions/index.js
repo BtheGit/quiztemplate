@@ -1,9 +1,15 @@
 import quizdata from '../api/quizdata_whatami';
 
-export function fetchQuestions() {
+// export function fetchQuestions() {                                 //Deprecated ?
+//   return {
+//     type: 'FETCH_QUESTIONS',
+//     payload: quizdata.questions 
+//   }
+// }
+export function resetQuiz() {
   return {
-    type: 'FETCH_QUESTIONS',
-    payload: quizdata.questions /* it would be nice to remake this for API ajax calls in the future instead of hardcoding the quizdata json file */
+    type: 'RESET_QUIZ',
+    payload: quizdata.questions
   }
 }
 
@@ -32,3 +38,4 @@ export function addAnswered(answer) {
     payload: answer
   }
 }
+

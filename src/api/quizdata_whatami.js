@@ -117,7 +117,7 @@ const quiz = {
 						result: {"A": 1}
 					},
 					{
-						text: "You",
+						text: "Myself",
 						result: {"A": 1}
 					}
 
