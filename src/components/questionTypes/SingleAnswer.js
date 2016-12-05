@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { nextQuestion, finishQuiz } from '../../actions';
 
-class SingleAnswer extends Component {
+const SingleAnswer = (props) => {
 
-  constructor() {
-    super();
-    this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
+
+  const handleAnswerSelected = (e) => {
+      if (props.quiz.questions.length - 1 === props.quiz.quesCounter) {
+        props.dispatch(finishQuiz());
+      } else {
+        props.dispatch(nextQuestion());
+      }
   }
 
-  handleAnswerSelected(e) {
-    if (typeof this.props.onChange === 'function') {
-      this.props.onChange(e.target.value);
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <ul>
-          <h2>{this.props.question.question}</h2>
-          {this.props.question.answers.map((answer, i) => {
-            return <li key={i} onClick={this.handleAnswerSelected}>{answer.text}</li>;
-          })}
-        </ul>
-      </div>
-    );
-  }
+  
+  return (
+    <div>
+      <ul>
+        <h2>{props.question.question}</h2>
+        {props.question.answers.map((answer, i) => {
+          return <li key={i} onClick={handleAnswerSelected}>{answer.text}</li>;
+        })}
+      </ul>
+    </div>
+  );
+  
 }
 
 const mapStateToProps = (state) => {

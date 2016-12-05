@@ -11,21 +11,23 @@ class QuestionsPage extends Component {
 
   constructor() {
     super();
-    this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
   }
 
   componentDidMount() {
     this.props.dispatch(fetchQuestions());
   }
 
-  handleAnswerSelected() {
-    if(this.props.quiz.questions.length - 1 === this.props.quiz.quesCounter) {
-      this.props.dispatch(finishQuiz());
-    }
-    else {
-      this.props.dispatch(nextQuestion());
-    }
-  }
+  //This can be handled directly at the releveant component level. More flexible too. Just leaving it here so you can see
+  //what I did
+
+  // handleAnswerSelected = () => {
+  //   if(this.props.quiz.questions.length - 1 === this.props.quiz.quesCounter) {
+  //     this.props.dispatch(finishQuiz());
+  //   }
+  //   else {
+  //     this.props.dispatch(nextQuestion());
+  //   }
+  // }
 
   getCurrentQuestion() {
     return this.props.quiz.questions[this.props.quiz.quesCounter];
@@ -39,21 +41,20 @@ class QuestionsPage extends Component {
 
     switch(question.type) {
       case 'singleAnswer':
-        return <SingleAnswer question={question} onChange={this.handleAnswerSelected} />
+        return <SingleAnswer question={question} {...this.props} />
       case 'datepicker':
-        return <DatePicker question={question} onChange={this.handleAnswerSelected} />
+        return <DatePicker />
       default:
         return <div>Empty</div>
     }
   }
 
+
   renderResultsPage() {
     return (
       <div>
         <ResultsPage
-          count={this.props.quiz.questions.length}
-          result={this.props.quiz.correctAnswerCount}
-          resultText={this.props.quiz.result}
+          {...this.props}
         />
       </div>
     )
