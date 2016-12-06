@@ -9,7 +9,8 @@ import quizdata from '../api/quizdata_whatami';
 export function resetQuiz() {
   return {
     type: 'RESET_QUIZ',
-    payload: quizdata.questions
+    questions: quizdata.questions,
+    results: quizdata.results
   }
 }
 

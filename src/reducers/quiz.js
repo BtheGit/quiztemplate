@@ -1,7 +1,7 @@
 const initialState = {
   type: '',
   questions: [],
-  results: [],
+  results: {},
   result: '',
   quesCounter: 0,
   quizFinished: false,
@@ -19,7 +19,8 @@ const quiz = (state = initialState, action) => {
         correctAnswerCount: 0,
         answerRecord: [],
         quizFinished: false,
-        questions: action.payload,
+        questions: action.questions,
+        results: action.results,
         scoreRecord: {}
       })
     case 'NEXT_QUESTION':
