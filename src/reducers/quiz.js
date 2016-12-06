@@ -6,6 +6,7 @@ const initialState = {
   quesCounter: 0,
   quizFinished: false,
   answerRecord: [],
+  scoreRecord: {},
   correctAnswerCount: 0
 };
 
@@ -18,7 +19,8 @@ const quiz = (state = initialState, action) => {
         correctAnswerCount: 0,
         answerRecord: [],
         quizFinished: false,
-        questions: action.payload
+        questions: action.payload,
+        scoreRecord: {}
       })
     case 'NEXT_QUESTION':
       return  (Object.assign({}, state, {
@@ -44,6 +46,12 @@ const quiz = (state = initialState, action) => {
       return (Object.assign({}, state, {
         correctAnswerCount: state.correctAnswerCount + 1
       }))
+    case 'UPDATE_SCORE':
+      
+      return ({
+        ...state,
+        scoreRecord: action.payload
+      })
     default:
       return state;
   }

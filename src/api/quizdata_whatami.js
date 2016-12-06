@@ -5,7 +5,7 @@ const quiz = {
 				answers: [
 					{
 						text: "In a car",
-						result: {"A": 1}
+						result: {"A": 1, "C": 1}
 					},
 					{
 						text: "On a boat",
@@ -36,7 +36,7 @@ const quiz = {
 				answers: [
 					{
 						text: "I'm vegan",
-						result: {"A": 1}
+						result: {"A": -1, "C": 2}
 					},
 					{
 						text: "None",
@@ -67,7 +67,7 @@ const quiz = {
 				answers: [
 					{
 						text: "Keep Calm and Carry On",
-						result: {"A": 1}
+						result: {"A": -1}
 					},
 					{
 						text: "Make America Great Again",
@@ -98,7 +98,7 @@ const quiz = {
 				answers: [
 					{
 						text: "Freshly baked cookies",
-						result: {"A": 1}
+						result: {"A": -1, "B": 2}
 					},
 					{
 						text: "A belt",
@@ -129,7 +129,7 @@ const quiz = {
 				answers: [
 					{
 						text: "Serve breakfast in bed",
-						result: {"A": 1}
+						result: {"A": -3, "E": 4}
 					},
 					{
 						text: "Take you out for a fancy dinner",
@@ -227,7 +227,7 @@ const quiz = {
 			"F": "You are French. You think you are the greatest thing around and you hate Belgians.",
 			"G": "You are a feather. You started your life soaring through the air and now you spend your days dusting shelves.",
 			"H": "You are a dad joke. You are sure people would find you funny if they only understood the real you.",
-		}
+		},
 
 }
 

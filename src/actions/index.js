@@ -39,3 +39,10 @@ export function addAnswered(answer) {
   }
 }
 
+export function updateScore(answer) {
+  return {
+    type: 'UPDATE_SCORE',
+    payload: answer
+  }
+}
+
