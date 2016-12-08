@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import './StartButton.css';
 
 class StartButton extends Component {
   render() {

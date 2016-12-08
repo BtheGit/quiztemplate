@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import StartButton from '../StartButton/StartButton';
+import IntroImage from '../IntroImage/IntroImage';
 
 // function birthday(date) {
 //   let birthPath = date.month % 10;
@@ -28,6 +29,7 @@ function IntroPage (props) {
           <p>Welcome to our quiz</p>
           <StartButton text="Start Quiz" link="/questions"></StartButton>
         </div>
+        <IntroImage image="thinking.png" alt="Thinking man"></IntroImage>
       </div>
     );
 }
