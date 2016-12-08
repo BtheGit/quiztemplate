@@ -91,7 +91,7 @@ const quiz = {
 						result: {"A": 1,"D": 1,"F": 1,"G": 1}
 					},
 					{
-						text: "I'm with stupid'",
+						text: "I'm with stupid",
 						img: '',
 						result: {"A": 1,"C": 1,"D": 1,"E": 1,"F": 1,"G": 1}
 					},

@@ -88,17 +88,8 @@ ul {
   -moz-transition: all 0.5s;
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
-  -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
-  -webkit-transform: perspective(400) rotateX(20deg) translateY(0.5em) translateZ(1em);
-  -moz-transform: perspective(400) rotateX(20deg) translateY(0.5em) translateZ(1em);
-  -ms-transform: perspective(400) rotateX(20deg) translateY(0.5em) translateZ(1em);
-  -o-transform: perspective(400) rotateX(20deg) translateY(0.5em) translateZ(1em);
-}
-.start-button:hover {
-  background: #ffb637;
-  -webkit-box-shadow: 0px 0px 0 rgba(0, 0, 0, 0);
+
+    -webkit-box-shadow: 0px 0px 0 rgba(0, 0, 0, 0);
   -moz-box-shadow: 0px 0px 0 rgba(0, 0, 0, 0);
   box-shadow: 0px 0px 0 rgba(0, 0, 0, 0);
   -webkit-transform: perspective(400) rotateX(0deg) translateY(0em) translateZ(0em);
@@ -106,6 +97,19 @@ ul {
   -ms-transform: perspective(400) rotateX(0deg) translateY(0em) translateZ(0em);
   -o-transform: perspective(400) rotateX(0deg) translateY(0em) translateZ(0em);
 }
+.start-button:hover {
+  background: #ffb637;
+  -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
+  -webkit-transform: perspective(400) rotateX(20deg) translateY(0.5em) translateZ(1em);
+  -moz-transform: perspective(400) rotateX(20deg) translateY(0.5em) translateZ(1em);
+  -ms-transform: perspective(400) rotateX(20deg) translateY(0.5em) translateZ(1em);
+  -o-transform: perspective(400) rotateX(20deg) translateY(0.5em) translateZ(1em);
+
+}
+
+
 .question-wrap ul {
   margin: 0 auto;
   width: 80%;
