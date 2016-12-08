@@ -2,30 +2,37 @@ const quiz = {
 		questions: [
 			{
 				question: "Where were you born?",
+				questionImg: '',
 				answers: [
 					{
 						text: "In a car",
-						result: {"A": 1, "C": 1}
+						img: '',
+						result: {"B": 1, "C": 1, "E":1, "G": 1, "H":1}
 					},
 					{
-						text: "On a boat",
-						result: {"A": 1}
+						text: "On a yacht",
+						img: '',
+						result: {"C":2, "E": 1, "F": 1}
 					},
 					{
 						text: "In a train",
-						result: {"A": 1}
+						img: '',
+						result: {"B": 1, "G":1}
 					},
 					{
 						text: "On a plane",
-						result: {"A": 1}
+						img: '',
+						result: {"G": 1}
 					},
 					{
 						text: "In space",
-						result: {"A": 1}
+						img: '',
+						result: {"H": 1}
 					},
 					{
 						text: "In a building",
-						result: {"A": 1}
+						img: '',
+						result: {"A": 1, "D": 1, "H":1}
 					}
 
 				],
@@ -33,30 +40,37 @@ const quiz = {
 			},
 			{
 				question: "How many eggs did you eat last week?",
+				questionImg: '',
 				answers: [
 					{
 						text: "I'm vegan",
-						result: {"A": -1, "C": 2}
+						img: '',
+						result: {"C": 2, "D": 1, "E": 1, "F":1,"G":2}
 					},
 					{
 						text: "None",
-						result: {"A": 1}
+						img: '',
+						result: {"A": 1,"D": 1, "G": 1}
 					},
 					{
 						text: "A few",
-						result: {"A": 1}
+						img: '',
+						result: {"A": 1,"D": 1, "H": 1}
 					},
 					{
 						text: "A few a day",
-						result: {"A": 1}
+						img: '',
+						result: {"A": 1,"B": 1, "E": 1, "H": 1}
 					},
 					{
 						text: "All of the eggs",
-						result: {"A": 1}
+						img: '',
+						result: {"B": 1}
 					},
 					{
 						text: "Only Caviar",
-						result: {"A": 1}
+						img: '',
+						result: {"C": 1,"E": 1,"F": 1}
 					}
 
 				],
@@ -64,30 +78,37 @@ const quiz = {
 			},
 			{
 				question: "Which of these phrases do you dislike the most on a T-shirt?",
+				questionImg: '',
 				answers: [
 					{
 						text: "Keep Calm and Carry On",
-						result: {"A": -1}
+						img: '',
+						result: {"B": 1,"H": 1}
 					},
 					{
 						text: "Make America Great Again",
-						result: {"A": 1}
+						img: '',
+						result: {"A": 1,"D": 1,"F": 1,"G": 1}
 					},
 					{
 						text: "I'm with stupid'",
-						result: {"A": 1}
+						img: '',
+						result: {"A": 1,"C": 1,"D": 1,"E": 1,"F": 1,"G": 1}
 					},
 					{
 						text: "I Heart NY",
-						result: {"A": 1}
+						img: '',
+						result: {"B": 1,"C": 1,"G": 1}
 					},
 					{
 						text: "Save water, drink beer",
-						result: {"A": 1}
+						img: '',
+						result: {"C": 1,"D": 1,"E": 1,"F": 1,"G": 1}
 					},
 					{
 						text: "Mumford and Sons",
-						result: {"A": 1}
+						img: '',
+						result: {"B": 1}
 					}
 
 				],
@@ -95,30 +116,37 @@ const quiz = {
 			},
 			{
 				question: "Which of these most reminds you of your mother?",
+				questionImg: '',
 				answers: [
 					{
 						text: "Freshly baked cookies",
-						result: {"A": -1, "B": 2}
+						img: '',
+						result: {"H": 1}
 					},
 					{
 						text: "A belt",
-						result: {"A": 1}
+						img: '',
+						result: {"B": 1}
 					},
 					{
 						text: "A glass of wine",
-						result: {"A": 1}
+						img: '',
+						result: {"C": 1, "E":1}
 					},
 					{
 						text: "Christmas",
-						result: {"A": 1}
+						img: '',
+						result: {"F": 1, "H":1}
 					},
 					{
 						text: "Nursery Rhymes",
-						result: {"A": 1}
+						img: '',
+						result: {"D": 1,"G": 1,"H": 1}
 					},
 					{
 						text: "Myself",
-						result: {"A": 1}
+						img: '',
+						result: {"A": 1, "G":1}
 					}
 
 				],
@@ -126,30 +154,37 @@ const quiz = {
 			},
 			{
 				question: "Which of these is the most romantic thing someone can do for you?",
+				questionImg: '',
 				answers: [
 					{
 						text: "Serve breakfast in bed",
-						result: {"A": -3, "E": 4}
+						img: '',
+						result: {"D": 1, "H": 1}
 					},
 					{
 						text: "Take you out for a fancy dinner",
-						result: {"A": 1}
+						img: '',
+						result: {"D": 1, "F":1}
 					},
 					{
 						text: "Let you wear sweatpants in public",
-						result: {"A": 1}
+						img: '',
+						result: {"B": 1, "H":1}
 					},
 					{
 						text: "Friend your mother on Facebook",
-						result: {"A": 1}
+						img: '',
+						result: {"D": 1}
 					},
 					{
 						text: "Write a love song for you",
-						result: {"A": 1}
+						img: '',
+						result: {"E": 1, "F":1}
 					},
 					{
 						text: "Go down on you",
-						result: {"A": 1}
+						img: '',
+						result: {"E": 1, "G": 1}
 					}
 
 				],
@@ -157,30 +192,37 @@ const quiz = {
 			},
 			{
 				question: "Where would you build your secret hideout?",
+				questionImg: '',
 				answers: [
 					{
 						text: "In Antarctica",
-						result: {"A": 1}
+						img: '',
+						result: {"F": 1, "H":1}
 					},
 					{
 						text: "Underwater",
-						result: {"A": 1}
+						img: '',
+						result: {"C": 1,"E": 1,"G": 1}
 					},
 					{
 						text: "In a cave",
-						result: {"A": 1}
+						img: '',
+						result: {"D": 1,"E": 1,"H": 1}
 					},
 					{
 						text: "On a mountaintop",
-						result: {"A": 1}
+						img: '',
+						result: {"A": 1, "F":1}
 					},
 					{
 						text: "In a desert oasis",
-						result: {"A": 1}
+						img: '',
+						result: {"B": 1,"C": 1,"G": 1}
 					},
 					{
 						text: "Denmark",
-						result: {"A": 1}
+						img: '',
+						result: {"A": 1, "D":1}
 					}
 
 				],
@@ -188,30 +230,37 @@ const quiz = {
 			},
 			{
 				question: "What would you like for your birthday this year?",
+				questionImg: '',
 				answers: [
 					{
 						text: "Socks",
-						result: {"A": 1}
+						img: '',
+						result: {"A": 2,"D": 1,"G": 1,"H": 1}
 					},
 					{
 						text: "A gun",
-						result: {"A": 1}
+						img: '',
+						result: {"B": 2, "C":1,"E":1}
 					},
 					{
 						text: "A smartwatch",
-						result: {"A": 1}
+						img: '',
+						result: {"A": 1, "C":1, "H":1}
 					},
 					{
 						text: "A telescope",
-						result: {"A": 1}
+						img: '',
+						result: {"C": 1,"E": 1,"F": 1,"G": 1,"H": 2}
 					},
 					{
 						text: "A roomba",
-						result: {"A": 1}
+						img: '',
+						result: {"A": 2, "D":1, "H":1}
 					},
 					{
 						text: "A recount",
-						result: {"A": 1}
+						img: '',
+						result: {"C":2, "F":1, "G":1}
 					}
 
 				],
@@ -225,9 +274,10 @@ const quiz = {
 			"D": "You are Taiwan. Nobody is completely sure whether you are real or not. Also, you look a little like a sweet potato.",
 			"E": "You are an anteater. You have a long tongue and you like to stick it in dark places.",
 			"F": "You are French. You think you are the greatest thing around and you hate Belgians.",
-			"G": "You are a feather. You started your life soaring through the air and now you spend your days dusting shelves.",
-			"H": "You are a dad joke. You are sure people would find you funny if they only understood the real you.",
+			"G": "You are a feather. You started your life soaring through the air on majestic wings and now you spend your days dusting shelves.",
+			"H": "You are a dad joke. You are sure people would find you punny if they only understood the real you.",
 		},
+		resultsType: 'VERT_CHART'
 
 }
 
