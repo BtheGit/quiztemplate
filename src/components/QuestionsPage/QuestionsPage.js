@@ -5,18 +5,13 @@ import SingleAnswer from '../questionTypes/SingleAnswer';
 // import TFQuestion from '../TFQuestion/TFQuestion';
 import DatePicker from '../questionTypes/DatePicker';
 import { connect } from 'react-redux';
-import { nextQuestion, finishQuiz, resetQuiz } from '../../actions'; //deprecated fetchQuestions for resetQuiz
+import { nextQuestion, finishQuiz } from '../../actions'; //deprecated fetchQuestions for resetQuiz
 
 class QuestionsPage extends Component {
 
-  constructor() {
-    super();
-  }
-
   componentDidMount() {
-    this.props.dispatch(resetQuiz());
+    // here should be a condition, if quiz.questions array is empty, redirect to intro page
   }
-
 
   handleAnswerSelected = () => {
     if(this.props.quiz.questions.length - 1 === this.props.quiz.quesCounter) {

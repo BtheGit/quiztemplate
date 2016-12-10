@@ -6,7 +6,7 @@ function IntroImage (props) {
 
     return (
       <div className="intro-image">
-        <img src={imagePath} data-alt={props.alt} />
+        <img src={imagePath} alt={props.alt} />
       </div>
     );
 }

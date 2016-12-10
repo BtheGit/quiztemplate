@@ -35,20 +35,11 @@ const quiz = (state = initialState, action) => {
       return (Object.assign({}, state, {
         answerRecord: [...state.answerRecord, action.payload]
       }))
-    // case 'FETCH_QUESTIONS':                                      //Deprecated?
-    //   return (Object.assign({}, state, {
-    //     questions: action.payload
-    //   }))
     case 'FINISH_QUIZ':
       return (Object.assign({}, state, {
         quizFinished: true
       }))
-    case 'CORRECT_ANSWER':
-      return (Object.assign({}, state, {
-        correctAnswerCount: state.correctAnswerCount + 1
-      }))
     case 'UPDATE_SCORE':
-      
       return ({
         ...state,
         scoreRecord: action.payload

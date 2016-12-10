@@ -1,11 +1,5 @@
 import quizdata from '../api/quizdata_whatami';
 
-// export function fetchQuestions() {                                 //Deprecated ?
-//   return {
-//     type: 'FETCH_QUESTIONS',
-//     payload: quizdata.questions 
-//   }
-// }
 export function resetQuiz() {
   return {
     type: 'RESET_QUIZ',
@@ -46,4 +40,3 @@ export function updateScore(answer) {
     payload: answer
   }
 }
-

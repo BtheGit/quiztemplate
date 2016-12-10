@@ -1,12 +1,22 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router';
+import React from 'react';
+import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
+import { resetQuiz } from '../../actions';
 
-class StartButton extends Component {
-  render() {
-    return (
-      <Link to={this.props.link} className="start-button">{this.props.text}</Link>
-    );
+const StartButton = (props) => {
+
+  const handleReset = (event) => {
+    props.dispatch(resetQuiz());
+    browserHistory.push('/questions');
   }
+
+  return (
+    <a className="start-button" onClick={handleReset}>{props.text}</a>
+  );
 }
 
-export default StartButton;
+const mapStateToProps = (state) => {
+  return {};
+}
+
+export default connect(mapStateToProps)(StartButton);
