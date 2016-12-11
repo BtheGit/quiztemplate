@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import ResultsPage from '../../pages/ResultsPage';
 import SingleAnswer from '../questionTypes/SingleAnswer';
-// import TFQuestion from '../TFQuestion/TFQuestion';
 import DatePicker from '../questionTypes/DatePicker';
+import AdUnit from '../AdUnit/AdUnit';
 import { connect } from 'react-redux';
-import { nextQuestion, finishQuiz } from '../../actions'; //deprecated fetchQuestions for resetQuiz
+import { nextQuestion, finishQuiz, animateQuestionStart, animateQuestionEnd } from '../../actions'; //deprecated fetchQuestions for resetQuiz
 
 class QuestionsPage extends Component {
 
   componentDidMount() {
-    // here should be a condition, if quiz.questions array is empty, redirect to intro page
+    if( ! this.getCurrentQuestion()) {
+      browserHistory.push('/');
+    }
   }
 
   handleAnswerSelected = () => {
@@ -18,7 +20,12 @@ class QuestionsPage extends Component {
       this.props.dispatch(finishQuiz());
     }
     else {
-      this.props.dispatch(nextQuestion());
+      this.props.dispatch(animateQuestionStart());
+
+      setTimeout(function() {
+        this.props.dispatch(nextQuestion());
+        this.props.dispatch(animateQuestionEnd());
+      }.bind(this), 500);
     }
   }
 
@@ -53,6 +60,15 @@ class QuestionsPage extends Component {
     )
   }
 
+  questionAnimationClass() {
+    if(this.props.quiz.animatingQuestion === true) {
+      return "hide-question";
+    }
+    else {
+      return "show-question";
+    }
+  }
+
   render() {
     return (
       <div>
@@ -61,8 +77,17 @@ class QuestionsPage extends Component {
         </ul>
         {
           (this.props.quiz.quizFinished)
-          ? <div className="result-wrap">{this.renderResultsPage()}</div>
-          : <div className="question-wrap">{this.renderQuestion()}</div>
+          ?
+          <div className="result-wrap">{this.renderResultsPage()}</div>
+          :
+          <div className="question-wrap">
+            <div className={"col-main "+this.questionAnimationClass()}>
+              {this.renderQuestion()}
+            </div>
+            <div className="col-sidebar">
+              <AdUnit type="160x600"></AdUnit>
+            </div>
+          </div>
         }
       </div>
     );

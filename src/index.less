@@ -1,6 +1,7 @@
 // out: index.css
 
 @import 'mixins.less';
+@import 'animations.less';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 @color-primary: #6cbba8;
@@ -83,9 +84,19 @@ ul {
   }
 }
 
+.transition-wrapper {
+  & > div {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+  }
+}
+
 .intro-wrap, .question-wrap, .result-wrap {
   width: 100%;
-  padding-top: 6em;
+  min-height: 600px;
+  margin: 6em auto 0;
   text-align: center;
   .transition(all 1s);
   .smart-color(@body-background, darken(@color-primary, 25%), #fff);
@@ -125,9 +136,22 @@ ul {
 }
 
 .question-wrap {
+  position: relative;
+  .col-main {
+    width: 60%;
+    position: absolute;
+    top: 0;
+    left: 10%;
+  }
+  .col-sidebar {
+    position: absolute;
+    top: 0;
+    right: 10%;
+    width: 20%;
+  }
   ul {
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
     max-width: 800px;
     min-width: 300px;
   }
@@ -158,4 +182,10 @@ ul {
       }
     }
   }
+}
+
+.result-wrap {
+  width: 80%;
+  min-width: 500px;
+  max-width: 800px;
 }

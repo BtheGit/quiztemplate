@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
-// import './App.scss';
+import { RouteTransition } from 'react-router-transition';
 
 class App extends Component {
 
   render() {
     return (
       <div className="App">
-        {this.props.children}
+        <RouteTransition
+          pathname={this.props.location.pathname}
+          className="transition-wrapper"
+          atEnter={{ opacity: 0 }}
+          atLeave={{ opacity: 0 }}
+          atActive={{ opacity: 1 }}
+        >
+          {this.props.children}
+        </RouteTransition>
       </div>
     );
   }

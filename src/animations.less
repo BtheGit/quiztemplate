@@ -1,0 +1,37 @@
+.hide-question {
+	animation-name: rubberBandOut;
+	animation-duration: 0.5s;
+}
+
+.show-question {
+	animation-name: rubberBandIn;
+	animation-duration: 0.5s;
+}
+
+@keyframes rubberBandIn {
+	from {
+		.transform(perspective(400) rotateX(-90deg));
+		.opacity(0);
+  }
+	60% {
+		.transform(perspective(400) rotateX(-90deg));
+		.opacity(1);
+	}
+	to {
+		.transform(perspective(400) rotateX(0deg));
+	}
+}
+
+@keyframes rubberBandOut {
+  from {
+		.transform(perspective(400) rotateX(0deg));
+  }
+	60% {
+		.transform(perspective(400) rotateX(90deg));
+		.opacity(1);
+	}
+	to {
+		.opacity(0);
+		.transform(perspective(400) rotateX(90deg));
+	}
+}

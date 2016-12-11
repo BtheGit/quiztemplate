@@ -1,4 +1,5 @@
 import React from 'react';
+import AdUnit from '../components/AdUnit/AdUnit';
 
 function ResultsPage (props) {
 
@@ -18,8 +19,9 @@ function ResultsPage (props) {
 
 	return (
 		<div>
-			<h1>RESULTS!</h1>
+			<h1>Your result</h1>
 			<h2>{result}</h2>
+			<AdUnit type="336x280"></AdUnit>
 		</div>
 	);
 }

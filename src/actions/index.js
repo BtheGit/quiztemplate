@@ -14,6 +14,18 @@ export function nextQuestion() {
   }
 }
 
+export function animateQuestionStart() {
+  return {
+    type: 'ANIMATE_QUESTION_START'
+  }
+}
+
+export function animateQuestionEnd() {
+  return {
+    type: 'ANIMATE_QUESTION_END'
+  }
+}
+
 export function finishQuiz() {
   return {
     type: 'FINISH_QUIZ'

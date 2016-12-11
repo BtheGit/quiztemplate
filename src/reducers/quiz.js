@@ -7,7 +7,8 @@ const initialState = {
   quizFinished: false,
   answerRecord: [],
   scoreRecord: {},
-  correctAnswerCount: 0
+  correctAnswerCount: 0,
+  animatingQuestion: false
 };
 
 const quiz = (state = initialState, action) => {
@@ -43,6 +44,16 @@ const quiz = (state = initialState, action) => {
       return ({
         ...state,
         scoreRecord: action.payload
+      })
+    case 'ANIMATE_QUESTION_START':
+      return ({
+        ...state,
+        animatingQuestion: true
+      })
+    case 'ANIMATE_QUESTION_END':
+      return ({
+        ...state,
+        animatingQuestion: false
       })
     default:
       return state;

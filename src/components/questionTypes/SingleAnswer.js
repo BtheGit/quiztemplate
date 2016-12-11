@@ -10,7 +10,10 @@ const SingleAnswer = (props) => {
       let prev = props.quiz.scoreRecord;
       let next = props.question.answers[answer].result;
       for (let key in next) {
-        prev[key] = (prev[key]) ? prev[key] + next[key] : next[key]
+        if(next.hasOwnProperty(key)) {
+          // Added an if condition, see http://stackoverflow.com/questions/4166551/javascript-jslint-error-the-body-of-a-for-in-should-be-wrapped-in-an-if-statem
+          prev[key] = (prev[key]) ? prev[key] + next[key] : next[key]
+        }
       }
       props.dispatch(updateScore(prev));
   }
@@ -22,13 +25,15 @@ const SingleAnswer = (props) => {
     }
   }
 
+  const options = props.question.answers.map((answer, i) => {
+    return <li key={i} id={i} onClick={handleAnswerSelected}><span>{answer.text}</span></li>;
+  });
+
   return (
     <div>
     <h2>{props.question.question}</h2>
       <ul>
-        {props.question.answers.map((answer, i) => {
-          return <li key={i} id={i} onClick={handleAnswerSelected}><span>{answer.text}</span></li>;
-        })}
+        {options}
       </ul>
     </div>
   );

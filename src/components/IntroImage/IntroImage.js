@@ -2,7 +2,7 @@ import React from 'react';
 
 function IntroImage (props) {
 
-    let imagePath = require('../../media/'+props.image);
+    const imagePath = require('../../media/'+props.image);
 
     return (
       <div className="intro-image">
