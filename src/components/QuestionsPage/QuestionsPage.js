@@ -15,6 +15,14 @@ class QuestionsPage extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    // Trigger the entering animation when next question is changed in the store
+    if (nextProps.quiz.quesCounter !== this.props.quiz.quesCounter) {
+      console.log('received', nextProps.quiz.quesCounter);
+      this.props.dispatch(animateQuestionEnd());
+    }
+  }
+
   handleAnswerSelected = () => {
     if(this.props.quiz.questions.length - 1 === this.props.quiz.quesCounter) {
       this.props.dispatch(finishQuiz());
@@ -24,8 +32,7 @@ class QuestionsPage extends Component {
 
       setTimeout(function() {
         this.props.dispatch(nextQuestion());
-        this.props.dispatch(animateQuestionEnd());
-      }.bind(this), 500);
+      }.bind(this), 545);
     }
   }
 

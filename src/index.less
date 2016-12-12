@@ -90,12 +90,12 @@ ul {
     left: 0;
     top: 0;
     right: 0;
+    bottom: 0;
   }
 }
 
 .intro-wrap, .question-wrap, .result-wrap {
   width: 100%;
-  min-height: 600px;
   margin: 6em auto 0;
   text-align: center;
   .transition(all 1s);
@@ -108,12 +108,14 @@ ul {
   position: absolute;
   left: 50%;
   margin-left: -100px;
-  bottom: 0;
+  bottom: -10%;
   z-index: 0;
   display: block;
   overflow: hidden;
   img {
-    margin-bottom: -150px;
+    display: block;
+    position: relative;
+    bottom: -50px;
   }
 }
 
@@ -148,6 +150,7 @@ ul {
     top: 0;
     right: 10%;
     width: 20%;
+    padding-bottom: 50px;
   }
   ul {
     margin: 0 auto;
