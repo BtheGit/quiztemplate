@@ -1,3 +1,7 @@
+.stButton * {
+box-sizing: content-box;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 .hide-question h2 {
   animation-name: fadeOut;
