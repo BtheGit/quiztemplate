@@ -7,12 +7,13 @@
 @color-primary: #6cbba8;
 @color-secondary: #514481;
 @color-attention: #fca307;
+@color-progress-done: #75e896;
 
 @header-background: darken(@color-secondary, 10%);
 @nav-background: @color-secondary;
 @body-background: desaturate(darken(@color-primary, 25%), 10%);
 
-@body-image: './media/body-bcg.jpg';
+@body-image: './media/body-bcg-crazy.jpg';
 
 .smart-color (@background, @b, @c) when (lightness(@background) >= 50%) {
   // Its a light color return a dark output
@@ -29,6 +30,10 @@
 .smart-background (@background, @b, @c) when (lightness(@background) < 50%) {
   // Its a dark color return a dark output
   background: @c;
+}
+
+.stButton * {
+  box-sizing: content-box;
 }
 
 body {
@@ -88,6 +93,27 @@ ul {
   li.social-top {
     margin: 6px 5px 0 0;
     float: right;
+  }
+}
+
+.progress-graphic {
+  height: 6px;
+  position: relative;
+  width: 100%;
+  background: darken(@color-secondary, 15%);
+  .progress-done {
+    background: @color-progress-done;
+    height: 100%;
+    .transition(width 1s);
+  }
+}
+
+.progress-numeric {
+  font-size: 0.7em;
+  margin: 0 10px;
+  color: #fff;
+  b {
+    color: @color-progress-done;
   }
 }
 
@@ -182,6 +208,7 @@ ul {
       height: 80px;
       .smart-background(@body-background, darken(@color-primary, 10%), lighten(@color-primary, 10%));
       display: table-cell;
+      padding: 0 10px;
       vertical-align: middle;
       .transition(all 0.5s);
       .box-shadow(0px 1px 3px rgba(0,0,0,0.1));

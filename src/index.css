@@ -1,11 +1,7 @@
-.stButton * {
-box-sizing: content-box;
-}
-
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 .hide-question h2 {
   animation-name: fadeOut;
-  animation-duration: 0.7s;
+  animation-duration: 0.5s;
 }
 .hide-question li {
   animation-name: flipLeftOut;
@@ -188,13 +184,16 @@ box-sizing: content-box;
     opacity: 0;
   }
 }
+.stButton * {
+  box-sizing: content-box;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   font-family: 'Open Sans', sans-serif;
   background: #3d6a5f;
-  background-image: url('media/body-bcg.jpg');
+  background-image: url('media/body-bcg-crazy.jpg');
   background-position: 50% 10%;
   background-size: 130%;
   overflow: hidden;
@@ -241,6 +240,28 @@ ul {
 .nav li.social-top {
   margin: 6px 5px 0 0;
   float: right;
+}
+.progress-graphic {
+  height: 6px;
+  position: relative;
+  width: 100%;
+  background: #322a4f;
+}
+.progress-graphic .progress-done {
+  background: #75e896;
+  height: 100%;
+  -webkit-transition: width 1s;
+  -moz-transition: width 1s;
+  -ms-transition: width 1s;
+  -o-transition: width 1s;
+}
+.progress-numeric {
+  font-size: 0.7em;
+  margin: 0 10px;
+  color: #fff;
+}
+.progress-numeric b {
+  color: #75e896;
 }
 .transition-wrapper > div {
   position: absolute;
@@ -350,6 +371,7 @@ ul {
   height: 80px;
   background: #8fcbbd;
   display: table-cell;
+  padding: 0 10px;
   vertical-align: middle;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;

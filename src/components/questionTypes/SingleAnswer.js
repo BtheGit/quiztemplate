@@ -11,7 +11,6 @@ const SingleAnswer = (props) => {
       let next = props.question.answers[answer].result;
       for (let key in next) {
         if(next.hasOwnProperty(key)) {
-          // Added an if condition, see http://stackoverflow.com/questions/4166551/javascript-jslint-error-the-body-of-a-for-in-should-be-wrapped-in-an-if-statem
           prev[key] = (prev[key]) ? prev[key] + next[key] : next[key]
         }
       }
@@ -40,8 +39,12 @@ const SingleAnswer = (props) => {
 
 }
 
-const mapStateToProps = (state) => {
-  return {};
-}
+export default SingleAnswer;
 
-export default connect(mapStateToProps)(SingleAnswer);
+/* YOU WERE NOT USING redux in this component as you were just passing the props from its parent, so we don't need this code below */
+
+// const mapStateToProps = (state) => {
+//   return {};
+// }
+//
+// export default connect(mapStateToProps)(SingleAnswer);

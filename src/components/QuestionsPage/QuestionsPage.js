@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
 import ResultsPage from '../../pages/ResultsPage';
-import SingleAnswer from '../questionTypes/SingleAnswer';
-import DatePicker from '../questionTypes/DatePicker';
+import SingleAnswer from '../QuestionTypes/SingleAnswer';
+import DatePicker from '../QuestionTypes/DatePicker';
 import AdUnit from '../AdUnit/AdUnit';
 import Header from '../Header/Header';
 import { connect } from 'react-redux';
@@ -86,8 +86,7 @@ class QuestionsPage extends Component {
     return (
       <div>
         <Header></Header>
-        {
-          (this.props.quiz.quizFinished)
+        {(this.props.quiz.quizFinished)
           ?
           <div className="result-wrap">{this.renderResultsPage()}</div>
           :
