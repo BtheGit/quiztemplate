@@ -2,14 +2,13 @@ import React from 'react';
 import { Link } from 'react-router';
 import StartButton from '../StartButton/StartButton';
 import IntroImage from '../IntroImage/IntroImage';
+import Header from '../Header/Header';
 
 function IntroPage (props) {
 
     return (
       <div>
-        <ul className="nav">
-        	<li><Link to="/home">Home</Link></li>
-        </ul>
+        <Header></Header>
         <div className="intro-wrap">
           <h1>What Am I, <em>Really?</em></h1>
           <p>Have you ever pondered the nature of your existence?</p>

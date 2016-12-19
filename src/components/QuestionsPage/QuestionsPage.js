@@ -4,6 +4,7 @@ import ResultsPage from '../../pages/ResultsPage';
 import SingleAnswer from '../questionTypes/SingleAnswer';
 import DatePicker from '../questionTypes/DatePicker';
 import AdUnit from '../AdUnit/AdUnit';
+import Header from '../Header/Header';
 import { connect } from 'react-redux';
 import { nextQuestion, finishQuiz, animateQuestionStart, animateQuestionEnd } from '../../actions'; //deprecated fetchQuestions for resetQuiz
 
@@ -84,9 +85,7 @@ class QuestionsPage extends Component {
   render() {
     return (
       <div>
-        <ul className="nav">
-        	<li><Link to="/">Home</Link></li>
-        </ul>
+        <Header></Header>
         {
           (this.props.quiz.quizFinished)
           ?
