@@ -8,8 +8,8 @@
 
 .hide-question {
 	h2 {
-		animation-name: flipTopOut;
-		animation-duration: 0.7s;
+		animation-name: fadeOut;
+		animation-duration: 0.5s;
 	}
 	li {
 		animation-name: flipLeftOut;
@@ -20,13 +20,18 @@
 
 .show-question {
 	h2 {
-		animation-name: flipTopIn;
+		animation-name: fadeIn;
 		animation-duration: 0.5s;
 	}
 	li {
 		animation-name: flipLeftIn;
 		animation-duration: 0.5s;
 	}
+}
+
+.result-wrap {
+		animation-name: flipTopIn;
+		animation-duration: 0.5s;
 }
 
 @keyframes flipLeftIn {
@@ -82,5 +87,29 @@
 	to {
 		.opacity(0);
 		.transform(perspective(400) rotateX(90deg));
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		.opacity(0);
+  }
+	80% {
+		.opacity(1);
+	}
+	to {
+		.opacity(1);
+	}
+}
+
+@keyframes fadeOut {
+  from {
+		.opacity(1);
+  }
+	20% {
+		.opacity(0);
+	}
+	to {
+		.opacity(0);
 	}
 }

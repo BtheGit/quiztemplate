@@ -17,7 +17,7 @@ class QuestionsPage extends Component {
 
   componentWillReceiveProps(nextProps) {
     // Trigger the entering animation when next question is changed in the store
-    if (nextProps.quiz.quesCounter !== this.props.quiz.quesCounter) {
+    if (nextProps.quiz.quesCounter !== this.props.quiz.quesCounter && this.props.quiz.questions[nextProps.quiz.quesCounter]) {
       console.log('received', nextProps.quiz.quesCounter);
       this.props.dispatch(animateQuestionEnd());
     }
@@ -25,14 +25,19 @@ class QuestionsPage extends Component {
 
   handleAnswerSelected = () => {
     if(this.props.quiz.questions.length - 1 === this.props.quiz.quesCounter) {
-      this.props.dispatch(finishQuiz());
+
+      this.props.dispatch(animateQuestionStart());
+      setTimeout(function() {
+        this.props.dispatch(finishQuiz());
+        this.props.dispatch(animateQuestionEnd());
+      }.bind(this), 500); // Time is dependant on the CSS animation duration
     }
     else {
       this.props.dispatch(animateQuestionStart());
 
       setTimeout(function() {
-        this.props.dispatch(nextQuestion());
-      }.bind(this), 545);
+        this.props.dispatch(nextQuestion()); // Time is dependant on the CSS animation duration
+      }.bind(this), 500);
     }
   }
 

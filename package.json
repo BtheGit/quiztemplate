@@ -11,6 +11,8 @@
     "react-addons-css-transition-group": "^15.4.1",
     "react-datepicker": "^0.37.0",
     "react-dom": "^15.4.1",
+    "react-facebook": "^2.2.2",
+    "react-helmet": "^3.2.3",
     "react-redux": "^4.4.6",
     "react-router": "^3.0.0",
     "react-router-redux": "^4.0.7",
