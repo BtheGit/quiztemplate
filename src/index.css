@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 .hide-question h2 {
   animation-name: fadeOut;
-  animation-duration: 0.5s;
+  animation-duration: 0.6s;
 }
 .hide-question li {
   animation-name: flipLeftOut;
@@ -403,6 +403,8 @@ ul {
 @media (max-width: 600px) {
   body {
     overflow: auto;
+    background-position: 50% 75%;
+    background-size: 230%;
   }
   .intro-wrap,
   .question-wrap,
