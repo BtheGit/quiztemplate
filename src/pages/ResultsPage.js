@@ -24,13 +24,12 @@ function ResultsPage (props) {
 				<Helmet 
 					title={result}
 					titleTemplate="WhatAmI-Quiz.com - %s"
-					defaultTitle='"What am I, really?" Find the real you with a few simple questions.'
+					defaultTitle='"What am I really?" Find the real you with a few simple questions.'
 
 				/>
 			</div>
 			<h1>Your result</h1>
 			<h2>{result}</h2>
-			<AdUnit type="336x280"></AdUnit>
 			<div>
 				<span className='st_facebook_vcount'></span>
 				<span className='st_twitter_vcount'></span>
@@ -42,6 +41,7 @@ function ResultsPage (props) {
 				<span className='st_sharethis_vcount'></span>
 				<span className='st_email_vcount'></span>
 			</div>
+			<AdUnit type="336x280"></AdUnit>
 		</div>
 	);
 }
