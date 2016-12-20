@@ -9,6 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <Helmet 
+          title="What am I really? A quiz."
           titleTemplate="WhatAmI-Quiz.com - %s"
           defaultTitle='"What am I really?" Find the real you with a few simple questions.'
           script={[
