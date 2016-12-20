@@ -9,12 +9,21 @@ class App extends Component {
     return (
       <div className="App">
         <Helmet 
+          title="What am I really? A quiz."
           titleTemplate="WhatAmI-Quiz.com - %s"
-          defaultTitle='"What am I, really?" Find the real you with a few simple questions.'
+          defaultTitle='"What am I really?" Find the real you with a few simple questions.'
           script={[
             {"type": "text/javascript", "innerHTML": `{var switchTo5x=true;}`},           
             {"type": "text/javascript", "src": "http://w.sharethis.com/button/buttons.js?publisher=61f9d1b3-4729-4b86-a17f-cfcb51980324"},
             {"type": "text/javascript", "innerHTML": `{stLight.options({publisher: "61f9d1b3-4729-4b86-a17f-cfcb51980324", doNotHash: false, doNotCopy: false, hashAddressBar: true});}`}
+          ]}
+          meta={[
+            {"property": "og:title", "content": "What am I really? A quiz in 7 parts."},
+            {"property": "og:description", "content": "Discover the real you with just a few short questions."},
+            {"property": "og:image", "content": "/media/body-bcg.jpg"},
+            {"property": "og:type", "content": "website"},
+            {"property": "og:url", "content": "http://www.whatami-quiz.com"},
+            {"property": "og:site_name", "content": "What Am I Really?"}
           ]}          
         />
         <RouteTransition

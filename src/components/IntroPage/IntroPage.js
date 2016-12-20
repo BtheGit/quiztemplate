@@ -10,7 +10,7 @@ function IntroPage (props) {
       <div>
         <Header></Header>
         <div className="intro-wrap">
-          <h1>What Am I, <em>Really?</em></h1>
+          <h1>What Am I <em>Really?</em></h1>
           <p>Have you ever pondered the nature of your existence?</p>
           <p>The purpose of your being?</p>
           <p>What it all means?</p>
