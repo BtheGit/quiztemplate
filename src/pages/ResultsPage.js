@@ -13,7 +13,8 @@ class ResultsPage extends Component {
 			FBCounter: 0,
 			result: "",
 			shareUrl: 'http://www.whatami-quiz.com',
-	    	title: '"What Am I Really?" A quiz in 7 parts to find the real you.'
+	    	title: '"What Am I Really?" A quiz in 7 parts to find the real you.',
+	    	picture: ""
 		}
 	}
 
@@ -21,6 +22,12 @@ class ResultsPage extends Component {
 		const result = this.calculateResults();
 		this.setState({result});
 		this.getFBShareCount();
+
+		//Leaving it like this if we want to make it dynamic
+		//created a pic for sharing, but it also needs the help of the leader of the Autobots.
+		const resultImage = 'FB-share-preview-general.f52abe48.jpg'
+		const imagePath = 'whatami-quiz.com/static/media/' + resultImage; 
+		this.setState({picture: imagePath});
 	}
 
 
@@ -28,14 +35,15 @@ class ResultsPage extends Component {
 		
 	    const params = {
 	        u: this.state.shareUrl,
-	        picture: "https://support.sharethis.com/hc/en-us/article_attachments/206187447/Open_Graph_Example.png",
+	        picture: this.state.picture,
 	        title: this.state.title,
 	        description: this.state.result,
 	    };
 
 		const url = `https://www.facebook.com/sharer.php?${this.serializeParams(params)}`;
 
-		this.popUp(url, 400, 400)
+		this.popUp(url, 450, 550)
+		console.log(params)
 	}
 
 	serializeParams = object => {
