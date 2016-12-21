@@ -269,7 +269,7 @@ const quiz = {
 		],
 		results: {
 			"A": "You are a hamster. Life is a wheel and you can't stop running.",
-			"B": "You are a train. You're noisy, you smoke a lot, and nobody in America likes you.",
+			"B": "You are a train. You're noisy, you smoke a lot, and nobody in America respects you.",
 			"C": "You are Los Angeles. You're a little crazy, a little racist, and you go on and on forever.",
 			"D": "You are Taiwan. Nobody is completely sure whether you are real or not. Also, you look a little like a sweet potato.",
 			"E": "You are an anteater. You have a long tongue and you like to stick it in dark places.",

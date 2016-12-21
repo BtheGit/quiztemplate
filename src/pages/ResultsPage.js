@@ -26,7 +26,7 @@ class ResultsPage extends Component {
 		//Leaving it like this if we want to make it dynamic
 		//created a pic for sharing, but it also needs the help of the leader of the Autobots.
 		const resultImage = 'FB-share-preview-general.f52abe48.jpg'
-		const imagePath = 'whatami-quiz.com/static/media/' + resultImage; 
+		const imagePath = 'http://whatami-quiz.com/static/media/' + resultImage; 
 		this.setState({picture: imagePath});
 	}
 

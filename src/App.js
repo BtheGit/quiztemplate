@@ -20,7 +20,8 @@ class App extends Component {
           meta={[
             {"property": "og:title", "content": "What am I really? A quiz in 7 parts."},
             {"property": "og:description", "content": "Discover the real you with just a few short questions."},
-            {"property": "og:image", "content": "/media/body-bcg.jpg"},
+            //warning, hardcoded image reference for now
+            {"property": "og:image", "content": "whatami-quiz.com/static/media/FB-share-preview-general.f52abe48.jpg"},
             {"property": "og:type", "content": "website"},
             {"property": "og:url", "content": "http://www.whatami-quiz.com"},
             {"property": "og:site_name", "content": "What Am I Really?"}
