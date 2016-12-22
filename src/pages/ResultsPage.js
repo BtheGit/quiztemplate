@@ -124,7 +124,6 @@ class ResultsPage extends Component {
 				</div>
 				<div>
 					<span className='st_twitter_vcount'></span>
-					<span className='st_pinterest_vcount'></span>
 					<span className='st_linkedin_vcount'></span>
 					<span className='st_plusone_vcount'></span>
 					<span className='st_tumblr_vcount'></span>
