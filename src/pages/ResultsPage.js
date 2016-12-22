@@ -11,6 +11,7 @@ class ResultsPage extends Component {
 		super(props)
 		this.state = {
 			FBCounter: 0,
+			PinterestCounter: 0,
 			result: "",
 			shareUrl: 'http://www.whatami-quiz.com',
 	    	title: '"What Am I Really?" A quiz in 7 parts to find the real you.',
@@ -21,7 +22,8 @@ class ResultsPage extends Component {
 	componentDidMount() {
 		const result = this.calculateResults();
 		this.setState({result});
-		this.getFBShareCount();
+		this.getShareCount('Pinterest', 'https://api.pinterest.com/v1/urls/count.json?url=http%3A%2F%2Fwww.whatami-quiz.com');
+		this.getShareCount('Facebook',"https://graph.facebook.com/?id=http%3A%2F%2Fwww.whatami-quiz.com");
 
 		//Leaving it like this if we want to make it dynamic
 		//created a pic for sharing, but it also needs the help of the leader of the Autobots.
@@ -31,23 +33,31 @@ class ResultsPage extends Component {
 	}
 
 
+	//########################### SHARE BUTTON LOGIC ###################
 	facebookShare = () => {
-		
 	    const params = {
 	        u: this.state.shareUrl,
 	        picture: this.state.picture,
 	        title: this.state.title,
 	        description: this.state.result,
 	    };
-
-		const url = `https://www.facebook.com/sharer.php?${this.serializeParams(params)}`;
-
+		const url = `https://www.facebook.com/sharer.php${this.serializeParams(params)}`;
 		this.popUp(url, 450, 550)
-		console.log(params)
 	}
 
+	pinterestShare = () => {		
+	    const params = {
+	        url: this.state.shareUrl,
+	        media: this.state.picture,
+	        description: this.state.title,
+	    };
+		const url = 'https://pinterest.com/pin/create/button/' + this.serializeParams(params);
+		this.popUp(url, 450, 550)
+	}
+
+
 	serializeParams = object => {
-	  return Object.keys(object)
+	  return '?' + Object.keys(object)
 	    .filter(key => !!object[key])
 	    .map(key => `${key}=${encodeURIComponent(object[key])}`)
 	    .join('&');
@@ -57,14 +67,21 @@ class ResultsPage extends Component {
 		return window.open(url, "", `height=${height},width=${width},status=yes,toolbar=no,menubar=no,location=no`);
 	}
 
-	//uses jsonp library to call the JSON object from Facebook Open Graph 2.8 and extract share counts. Async.
-	getFBShareCount = () => {
-		const url = "https://graph.facebook.com/?id=http%3A%2F%2Fwww.whatami-quiz.com";
+	getShareCount = (service, url) => {
 		jsonp(url, (err, data) => {
-			console.log("jsonp: ", data.share.share_count)
-			this.setState({FBCounter: data.share.share_count});
- 		});			
+			switch(service){
+				case 'Facebook':
+					this.setState({FBCounter: data.share.share_count});
+					break;
+				case 'Pinterest':
+					this.setState({PinterestCounter: data.count});
+					break;
+				default:
+					break;
+			}
+		});			
 	}
+	//################ END SHARE BUTTON ###################################
 
 
 	calculateResults = () => {
@@ -93,12 +110,18 @@ class ResultsPage extends Component {
 				</div>
 				<h1>Your result</h1>
 				<h2>{this.state.result}</h2>
-
 				<div>
-					<button onClick={this.facebookShare}>Facebook</button>
+					<div>
+						<button onClick={this.facebookShare}>Facebook</button>
+					</div>
+					<h1>{this.state.FBCounter}</h1>
 				</div>
-				<h1>{this.state.FBCounter}</h1>
-
+				<div>
+					<div>
+						<button onClick={this.pinterestShare}>Pinterest</button>
+					</div>
+					<h1>{this.state.PinterestCounter}</h1>
+				</div>
 				<div>
 					<span className='st_twitter_vcount'></span>
 					<span className='st_pinterest_vcount'></span>
