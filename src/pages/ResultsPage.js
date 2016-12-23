@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AdUnit from '../components/AdUnit/AdUnit';
 import Helmet from 'react-helmet';
 import jsonp from 'jsonp';
+import Script from 'react-load-script';
 
 //using ShareThis buttons that are managed by a script imported using HELMET in App component
 
@@ -28,8 +29,15 @@ class ResultsPage extends Component {
 		//Leaving it like this if we want to make it dynamic
 		//created a pic for sharing, but it also needs the help of the leader of the Autobots.
 		const resultImage = 'FB-share-preview-general.f52abe48.jpg'
-		const imagePath = 'http://whatami-quiz.com/static/media/' + resultImage; 
+		const imagePath = 'http://whatami-quiz.com/static/media/' + resultImage;
 		this.setState({picture: imagePath});
+	}
+
+	handleShareScriptLoad() {
+		var switchTo5x=true;
+		window.stLight.options({publisher: "ea0ac320-0f7c-429e-8871-43dc8178629a", doNotHash: true, doNotCopy: true, hashAddressBar: false});
+		// Re-render (parse) ShareThis buttons
+		if (window.stButtons){window.stButtons.locateElements()};
 	}
 
 
@@ -45,7 +53,7 @@ class ResultsPage extends Component {
 		this.popUp(url, 450, 550)
 	}
 
-	pinterestShare = () => {		
+	pinterestShare = () => {
 	    const params = {
 	        url: this.state.shareUrl,
 	        media: this.state.picture,
@@ -79,7 +87,7 @@ class ResultsPage extends Component {
 				default:
 					break;
 			}
-		});			
+		});
 	}
 	//################ END SHARE BUTTON ###################################
 
@@ -102,12 +110,17 @@ class ResultsPage extends Component {
 		return (
 			<div>
 				<div className="resultsHelmet">
-					<Helmet 
+					<Helmet
 						title={this.state.result}
 						titleTemplate="What are you really? - %s"
 						defaultTitle='"What am I really?" Find the real you with a few simple questions.'
 					/>
 				</div>
+				<Script
+		      url="http://w.sharethis.com/button/buttons.js?publisher=61f9d1b3-4729-4b86-a17f-cfcb51980324"
+		      onLoad={this.handleShareScriptLoad.bind(this)}
+					onError={function() {console.log('ShareThis did not load');}}
+		    />
 				<h1>Your result</h1>
 				<h2>{this.state.result}</h2>
 				<div>
