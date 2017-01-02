@@ -20,7 +20,7 @@ const quiz = (state = initialState, action) => {
         correctAnswerCount: 0,
         answerRecord: [],
         quizFinished: false,
-        questions: action.questions.splice(0, 1),
+        questions: action.questions,
         results: action.results,
         scoreRecord: {}
       })

@@ -25,6 +25,10 @@ class QuestionsPage extends Component {
   }
 
   handleAnswerSelected = () => {
+    if(this.props.quiz.animatingQuestion) {
+      return false;
+    }
+    
     if(this.props.quiz.questions.length - 1 === this.props.quiz.quesCounter) {
 
       this.props.dispatch(animateQuestionStart());
