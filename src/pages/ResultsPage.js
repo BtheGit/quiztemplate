@@ -43,12 +43,12 @@ class ResultsPage extends Component {
 
 	//########################### SHARE BUTTON LOGIC ###################
 	facebookShare = () => {
-	    const params = {
-	        u: this.state.shareUrl,
-	        picture: this.state.picture,
-	        title: this.state.title,
-	        description: this.state.result,
-	    };
+    const params = {
+        u: this.state.shareUrl,
+        picture: this.state.picture,
+        title: this.state.title,
+        description: this.state.result,
+    };
 		const url = `https://www.facebook.com/sharer.php${this.serializeParams(params)}`;
 		this.popUp(url, 450, 550)
 	}
@@ -123,19 +123,15 @@ class ResultsPage extends Component {
 		    />
 				<h1>Your result</h1>
 				<h2>{this.state.result}</h2>
-				<div>
-					<div>
-						<button onClick={this.facebookShare}>Facebook</button>
-					</div>
-					<h1>{this.state.FBCounter}</h1>
-				</div>
-				<div>
-					<div>
-						<button onClick={this.pinterestShare}>Pinterest</button>
-					</div>
-					<h1>{this.state.PinterestCounter}</h1>
-				</div>
-				<div>
+				<div className="share-icons">
+					<span className="custom-st-button">
+					<div className="stBubble"><div className="stBubble_count">{this.state.FBCounter}</div></div>
+						<a className="button facebook" onClick={this.facebookShare}>Share</a>
+					</span>
+					<span className="custom-st-button">
+					<div className="stBubble"><div className="stBubble_count">{this.state.PinterestCounter}</div></div>
+						<a className="button pinterest" onClick={this.pinterestShare}>Share</a>
+					</span>
 					<span className='st_twitter_vcount'></span>
 					<span className='st_linkedin_vcount'></span>
 					<span className='st_plusone_vcount'></span>
