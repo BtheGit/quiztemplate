@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link, browserHistory } from 'react-router';
-import ResultsPage from '../../pages/ResultsPage';
+import { browserHistory } from 'react-router';
+import ResultsPage from '../ResultsPage/ResultsPage';
 import SingleAnswer from '../QuestionTypes/SingleAnswer';
 import DatePicker from '../QuestionTypes/DatePicker';
 import AdUnit from '../AdUnit/AdUnit';
@@ -28,7 +28,7 @@ class QuestionsPage extends Component {
     if(this.props.quiz.animatingQuestion) {
       return false;
     }
-    
+
     if(this.props.quiz.questions.length - 1 === this.props.quiz.quesCounter) {
 
       this.props.dispatch(animateQuestionStart());

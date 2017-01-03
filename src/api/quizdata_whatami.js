@@ -276,9 +276,7 @@ const quiz = {
 			"F": "You are French. You think you are the greatest thing around and you hate Belgians.",
 			"G": "You are a feather. You started your life soaring through the air on majestic wings and now you spend your days dusting shelves.",
 			"H": "You are a dad joke. You are sure people would find you punny if they only understood the real you.",
-		},
-		resultsType: 'VERT_CHART'
-
+		}
 }
 
 export default quiz;

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 import StartButton from '../StartButton/StartButton';
 import IntroImage from '../IntroImage/IntroImage';
 import Header from '../Header/Header';

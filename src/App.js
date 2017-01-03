@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { RouteTransition } from 'react-router-transition';
 import Helmet from 'react-helmet';
+import meta from './api/metadata_whatami.js';
 
 class App extends Component {
 
@@ -9,17 +10,16 @@ class App extends Component {
     return (
       <div className="App">
         <Helmet
-          title="What am I really? A quiz."
+          title={meta.title}
           titleTemplate="WhatAmI-Quiz.com - %s"
-          defaultTitle='"What am I really?" Find the real you with a few simple questions.'
+          defaultTitle={meta.defaultTitle}
           meta={[
-            {"property": "og:title", "content": "What am I really? A quiz in 7 parts."},
-            {"property": "og:description", "content": "Discover the real you with just a few short questions."},
-            //warning, hardcoded image reference for now
-            {"property": "og:image", "content": "whatami-quiz.com/static/media/FB-share-preview-general.f52abe48.jpg"},
+            {"property": "og:title", "content": meta.content},
+            {"property": "og:description", "content": meta.description},
+            {"property": "og:image", "content": meta.url+'/static/media/'+meta.image},
             {"property": "og:type", "content": "website"},
-            {"property": "og:url", "content": "http://www.whatami-quiz.com"},
-            {"property": "og:site_name", "content": "What Am I Really?"}
+            {"property": "og:url", "content": meta.url},
+            {"property": "og:site_name", "content": meta.site_name}
           ]}
         />
         <RouteTransition

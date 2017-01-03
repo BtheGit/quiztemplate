@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import AdUnit from '../components/AdUnit/AdUnit';
+import AdUnit from '../AdUnit/AdUnit';
 import Helmet from 'react-helmet';
 import jsonp from 'jsonp';
 import Script from 'react-load-script';
+import meta from '../../api/metadata_whatami.js';
 
 //using ShareThis buttons that are managed by a script imported using HELMET in App component
 
@@ -14,8 +15,8 @@ class ResultsPage extends Component {
 			FBCounter: 0,
 			PinterestCounter: 0,
 			result: "",
-			shareUrl: 'http://www.whatami-quiz.com',
-	    	title: '"What Am I Really?" A quiz in 7 parts to find the real you.',
+			shareUrl: meta.url,
+	    	title: meta.default_title,
 	    	picture: ""
 		}
 	}
@@ -23,8 +24,8 @@ class ResultsPage extends Component {
 	componentDidMount() {
 		const result = this.calculateResults();
 		this.setState({result});
-		this.getShareCount('Pinterest', 'https://api.pinterest.com/v1/urls/count.json?url=http%3A%2F%2Fwww.whatami-quiz.com');
-		this.getShareCount('Facebook',"https://graph.facebook.com/?id=http%3A%2F%2Fwww.whatami-quiz.com");
+		this.getShareCount('Pinterest', 'https://api.pinterest.com/v1/urls/count.json?url='+meta.url);
+		this.getShareCount('Facebook',"https://graph.facebook.com/?id="+meta.url);
 
 		//Leaving it like this if we want to make it dynamic
 		//created a pic for sharing, but it also needs the help of the leader of the Autobots.

@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { updateScore } from '../../actions';
 
 const SingleAnswer = (props) => {
@@ -40,11 +39,3 @@ const SingleAnswer = (props) => {
 }
 
 export default SingleAnswer;
-
-/* YOU WERE NOT USING redux in this component as you were just passing the props from its parent, so we don't need this code below */
-
-// const mapStateToProps = (state) => {
-//   return {};
-// }
-//
-// export default connect(mapStateToProps)(SingleAnswer);
