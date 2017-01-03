@@ -220,9 +220,11 @@ ul {
   color: #000000;
   padding: 0;
   margin: 0;
+  height: 30px;
 }
 .nav li {
   list-style: none;
+  line-height: 25px;
   display: inline-block;
 }
 .nav li a {
@@ -242,7 +244,7 @@ ul {
   float: right;
 }
 .progress-graphic {
-  height: 6px;
+  height: 3px;
   position: relative;
   width: 100%;
   background: #322a4f;

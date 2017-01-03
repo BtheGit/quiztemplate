@@ -3,8 +3,17 @@ import './App.css';
 import { RouteTransition } from 'react-router-transition';
 import Helmet from 'react-helmet';
 import meta from './api/metadata_whatami.js';
+import IntroPage from './components/IntroPage/IntroPage';
+import QuestionsPage from './components/QuestionsPage/QuestionsPage';
+import { connect } from 'react-redux';
+import { resetQuiz } from './actions';
 
 class App extends Component {
+
+  constructor(props) {
+		super(props);
+    props.dispatch(resetQuiz());
+	}
 
   render() {
     return (
@@ -22,18 +31,16 @@ class App extends Component {
             {"property": "og:site_name", "content": meta.site_name}
           ]}
         />
-        <RouteTransition
-          pathname={this.props.location.pathname}
-          className="transition-wrapper"
-          atEnter={{ opacity: 0 }}
-          atLeave={{ opacity: 0 }}
-          atActive={{ opacity: 1 }}
-        >
-          {this.props.children}
-        </RouteTransition>
+        <QuestionsPage></QuestionsPage>
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    quiz: state.quiz
+  };
+}
+
+export default connect(mapStateToProps)(App);

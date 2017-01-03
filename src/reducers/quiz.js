@@ -5,6 +5,7 @@ const initialState = {
   result: '',
   quesCounter: 0,
   quizFinished: false,
+  quizStarted: false,
   answerRecord: [],
   scoreRecord: {},
   correctAnswerCount: 0,
@@ -20,6 +21,7 @@ const quiz = (state = initialState, action) => {
         correctAnswerCount: 0,
         answerRecord: [],
         quizFinished: false,
+        quizStarted: true,
         questions: action.questions,
         results: action.results,
         scoreRecord: {}

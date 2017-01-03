@@ -7,7 +7,6 @@ const StartButton = (props) => {
 
   const handleReset = (event) => {
     props.dispatch(resetQuiz());
-    browserHistory.push('/questions');
   }
 
   return (

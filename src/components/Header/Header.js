@@ -10,7 +10,6 @@ function Header (props) {
   return (
     <div>
       <ul className="nav">
-        <li><Link to="/">Home</Link></li>
         <li><QuizProgress displayType="numeric"></QuizProgress></li>
         <li className="social-top">
           <iframe src={likeUrl} width="70" height="25" scrolling="no" frameBorder="0" allowTransparency="true"></iframe>
