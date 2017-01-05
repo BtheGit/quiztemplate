@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { RouteTransition } from 'react-router-transition';
 import Helmet from 'react-helmet';
 import meta from './api/metadata_whatami.js';
-import IntroPage from './components/IntroPage/IntroPage';
 import QuestionsPage from './components/QuestionsPage/QuestionsPage';
 import { connect } from 'react-redux';
 import { resetQuiz } from './actions';

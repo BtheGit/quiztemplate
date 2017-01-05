@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 import QuizProgress from '../QuizProgress/QuizProgress';
 import meta from '../../api/metadata_whatami.js';
 

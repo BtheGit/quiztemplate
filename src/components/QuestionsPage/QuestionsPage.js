@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
 import ResultsPage from '../ResultsPage/ResultsPage';
 import SingleAnswer from '../QuestionTypes/SingleAnswer';
 import DatePicker from '../QuestionTypes/DatePicker';
