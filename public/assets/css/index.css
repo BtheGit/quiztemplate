@@ -187,19 +187,16 @@
 .stButton * {
   box-sizing: content-box;
 }
-html {
-  height: 100%;
-  background: 100%;
-}
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   font-family: 'Open Sans', sans-serif;
   background: #3d6a5f;
-  background-image: url('media/body-bcg-crazy.jpg');
+  background-image: url('../images/body-bcg-crazy.jpg');
   background-position: 50% 10%;
   background-size: 130%;
+  overflow: hidden;
 }
 * {
   box-sizing: border-box;
@@ -293,6 +290,7 @@ ul {
   position: absolute;
   left: 50%;
   margin-left: -100px;
+  bottom: -10%;
   z-index: 0;
   display: block;
   overflow: hidden;

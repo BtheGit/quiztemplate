@@ -20,6 +20,13 @@ class App extends Component {
           title={meta.title}
           titleTemplate="WhatAmI-Quiz.com - %s"
           defaultTitle={meta.defaultTitle}
+          script={[
+            {"src" :"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
+          ]}
+          link={[
+            {"rel": "shortcut icon", "href": "./media/favicon.ico", "type": "image/x-icon"},
+            {"rel": "icon", "href": "./media/favicon.ico", "type": "image/x-icon"}
+          ]}
           meta={[
             {"property": "og:title", "content": meta.content},
             {"property": "og:description", "content": meta.description},

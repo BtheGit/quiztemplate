@@ -13,10 +13,15 @@ module.exports = {
 		filename: 'bundle.js',
         sourceMapFilename: 'bundle.map'
 	},
-	devtool: 'source-map',	
+	devtool: 'source-map',
 	plugins: [
 		require('autoprefixer'), //this is for PostCSS to do its magic making CSS prefixes for browsers automatic
 		new webpack.optimize.UglifyJsPlugin({minimize: true}),
+		new webpack.DefinePlugin({
+		  'process.env': {
+		     NODE_ENV: JSON.stringify('production')
+		   }
+		}),
 		new ExtractTextPlugin("styles.css"),
 		new HtmlWebpackPlugin({
 			filename: 'quiz.html',
@@ -26,7 +31,7 @@ module.exports = {
 			filename: 'index.html',
 			template: 'src/index.html'
 		})
-		
+
 	],
 	module: {
 		loaders: [
@@ -46,9 +51,9 @@ module.exports = {
 				test: /\.less$/,
 				loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!less-loader")
 			},
-      		{ 
-      			test: /\.css$/, 
-      			loader: ExtractTextPlugin.extract("style-loader", "css-loader") 
+      		{
+      			test: /\.css$/,
+      			loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       		},
       		{
 		        test: /\.html$/,
@@ -56,7 +61,5 @@ module.exports = {
 		    }
 		]
 	}
-	
-
 
 }
