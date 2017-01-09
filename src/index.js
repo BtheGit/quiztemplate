@@ -12,10 +12,13 @@ const store = createStore(
   })
 );
 
+const root = document.getElementById('root');
 
-ReactDOM.render(
-  <Provider store={store}>
+if(root) {
+  ReactDOM.render(
+    <Provider store={store}>
     <App></App>
-  </Provider>,
-  document.getElementById('root')
-);
+    </Provider>,
+    document.getElementById('root')
+  );
+}
