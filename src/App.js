@@ -13,6 +13,10 @@ class App extends Component {
     props.dispatch(resetQuiz());
 	}
 
+  componentDidMount() {
+    // (window.adsbygoogle = window.adsbygoogle || []).push({});    
+  }
+
   render() {
     return (
       <div className="App">

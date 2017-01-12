@@ -35,8 +35,8 @@ class ResultsPage extends Component {
 	}
 
 	handleShareScriptLoad() {
-		var switchTo5x=true;
-		window.stLight.options({publisher: "ea0ac320-0f7c-429e-8871-43dc8178629a", doNotHash: true, doNotCopy: true, hashAddressBar: false});
+		// var switchTo5x=true;
+		// window.stLight.options({publisher: "ea0ac320-0f7c-429e-8871-43dc8178629a", doNotHash: true, doNotCopy: true, hashAddressBar: false});
 		// Re-render (parse) ShareThis buttons
 		if (window.stButtons){window.stButtons.locateElements()};
 	}

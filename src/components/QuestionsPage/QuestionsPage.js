@@ -18,7 +18,6 @@ class QuestionsPage extends Component {
   componentWillReceiveProps(nextProps) {
     // Trigger the entering animation when next question is changed in the store
     if (nextProps.quiz.quesCounter !== this.props.quiz.quesCounter && this.props.quiz.questions[nextProps.quiz.quesCounter]) {
-      console.log('received', nextProps.quiz.quesCounter);
       this.props.dispatch(animateQuestionEnd());
     }
   }
